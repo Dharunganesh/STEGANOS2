@@ -8,8 +8,6 @@ cards.forEach(card => {
   card.addEventListener("click", () => {
     cards.forEach(c => c.classList.remove("active"));
     card.classList.add("active");
-
-    // Scroll to center
     card.scrollIntoView({
       behavior: "smooth",
       block: "center"
