@@ -8,13 +8,13 @@ header{
     text-align: center;
 }
 .container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  padding: 50px 0;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 50px 0;
 }
 .container::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 .card {
     height: 300px;
@@ -32,9 +32,32 @@ header{
 }
 
 .card.active {
-  opacity: 1;
-  transform: scale(1.05);
-  box-shadow:
-    0 0 30px rgba(255, 0, 0, 0.6),
-    0 0 10px rgba(255, 0, 0, 0.4);
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow:
+        0 0 30px rgba(255, 0, 0, 0.6),
+        0 0 10px rgba(255, 0, 0, 0.4);
 }
+
+.register {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register a {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ff3333;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register a:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
