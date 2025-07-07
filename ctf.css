@@ -28,7 +28,7 @@ body{
   min-height: 100px;
 }
 .google-form {
-    width: 60%;
+    width: 90%;
     height: 800px;
     margin: 40px auto; /* centers it horizontally */
     display: block;
