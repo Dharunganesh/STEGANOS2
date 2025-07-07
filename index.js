@@ -1,4 +1,27 @@
 const cards = document.querySelectorAll(".card");
+cards.forEach(card => {
+  card.addEventListener("click", handleHighlight);
+  card.addEventListener("touchstart", handleHighlight);
+});
+
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    cards.forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
+
+    // Scroll to center
+    card.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  });
+});
+
+
+function handleHighlight(e) {
+  cards.forEach(c => c.classList.remove("active"));
+  e.currentTarget.classList.add("active");
+}
 
 function highlightVisibleCard() {
   let mid = window.innerHeight / 2;
