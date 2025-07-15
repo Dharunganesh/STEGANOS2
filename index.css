@@ -1,7 +1,7 @@
 body {
-    background: black;
+    background: linear-gradient(120deg, #0f0f0f, #000000);
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Orbitron', sans-serif;
     margin: 0;
     padding: 0;
     }
@@ -9,6 +9,7 @@ body {
 header {
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 .logo {
@@ -17,9 +18,16 @@ header {
 }
 
 h1 {
-    margin-top: 0;
-    color: red;
+  color: red;
+  animation: pulseGlow 2s infinite;
 }
+
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 5px red; }
+  50% { text-shadow: 0 0 20px red; }
+  100% { text-shadow: 0 0 5px red; }
+}
+
 
 .container {
     display: flex;
@@ -27,8 +35,7 @@ h1 {
     align-items: center;
     min-height: 40vh;
     gap: 40px;
-    margin-top:0;
-    padding-top:-40px;
+    margin-top:0;           
 }
 
 .card {
@@ -45,10 +52,20 @@ h1 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0.9;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    box-shadow:
+        0 0 10px rgba(255, 0, 0, 0.3),
+        0 0 20px rgba(255, 0, 0, 0.2),
+        0 0 40px rgba(255, 0, 0, 0.1);
 }
 .card:hover {
-transform: scale(1.05);
-box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+    transform: scale(1.05);
+    box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.6),
+        0 0 40px rgba(255, 0, 0, 0.4),
+        0 0 60px rgba(255, 0, 0, 0.2)
 }
 
 a {
