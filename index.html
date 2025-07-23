@@ -6,10 +6,18 @@
     <title>Sympo</title>
     <link rel="stylesheet" href="index.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap" rel="stylesheet"/>
+
 </head>
 <header>
-    <img src="eagle.jpg" alt="Cyber Security Symposium Logo" class="logo" height="120vh" style="margin-bottom: 0;"/>
-    <h1 style="margin-top:0;">CYBER SECURITY SYMPOSIUM</h1>
+    <div class="header">
+  <img src="eagle.jpg" alt="Eagle Logo" class="logo" />
+  <h2 class="title">Association Of Cyber Security</h2>
+</div>
+
+    <p style="color:beige;">presents</p>
+    <h1 id="typewriter"></h1>
+
 </header>
 <body>
     <div class="container">
@@ -24,5 +32,21 @@
         </div>
         </a>
     </div>
+    <script>
+  const text = "STEGANOS";
+  let i = 0;
+  const speed = 150;
+
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typewriter").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  window.addEventListener('load', typeWriter);
+</script>
+
 </body>
 </html>
