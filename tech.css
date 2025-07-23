@@ -1,13 +1,14 @@
-body{
-    background:black;
-    color:white;
-    font-family: 'Share Tech Mono', monospace;
+body {
+    background: black;
+    color: #f2f2f2;
+    font-family: 'Nunito Sans', sans-serif;
 }
+
 header{
     color:red;
     text-align: center;
 }
-h1, h2 {
+h2 {
     font-family: 'Orbitron', sans-serif;
     animation: pulseGlow 2s infinite;
 }
@@ -72,5 +73,21 @@ h1, h2 {
 .register a:hover {
     background-color: #cc0000;
     transform: scale(1.05);
+}
+header h1 {
+    font-size: 3.2rem;
+    color: #ff3333;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 30px #ff0000;
+    font-family: 'Orbitron', sans-serif;
+    animation: glowSteganos 2s ease-in-out infinite;
+    margin-top: 0;
+}
+
+@keyframes glowSteganos {
+  0%, 100% { text-shadow: 0 0 10px #ff0000; }
+  50% { text-shadow: 0 0 25px #ff0000; }
 }
 
