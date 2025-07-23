@@ -1,14 +1,13 @@
 body {
-    background: black;
-    color: #f2f2f2;
-    font-family: 'Nunito Sans', sans-serif;
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 header{
     color:red;
     text-align: center;
 }
-h2 {
+h1, h2 {
     font-family: 'Orbitron', sans-serif;
     animation: pulseGlow 2s infinite;
 }
@@ -74,6 +73,11 @@ h2 {
     background-color: #cc0000;
     transform: scale(1.05);
 }
+.card p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
 header h1 {
     font-size: 3.2rem;
     color: #ff3333;
@@ -91,3 +95,6 @@ header h1 {
   50% { text-shadow: 0 0 25px #ff0000; }
 }
 
+html{
+    background-image: url(https://imgs.search.brave.com/QDywtA1eyPgUGro9c9zV5SRSH5y5cmRNkz_iJDjTUps/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93MC5w/ZWFrcHguY29tL3dh/bGxwYXBlci82MjYv/ODMwL0hELXdhbGxw/YXBlci1tYXRlcmlh/bC1kZXNpZ24tMDQ4/LWFic3RyYWN0LWJs/YWNrLWRhcmstZGln/aXRhbC1tYXRlcmlh/bC1kZXNpZ24tbW9k/ZXJuLXJlZC10ZWNo/LXRodW1ibmFpbC5q/cGc);
+}
