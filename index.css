@@ -27,11 +27,6 @@ header {
   margin-bottom:-20px;
 }
 
-.logo {
-  width: 5vw;               /* Adjust size as needed */
-  height: auto;
-}
-
 .title {
   font-family: 'Orbitron', sans-serif;
   color: white;
