@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'SD Dystopian';
+  src: url('font/SDDystopianDemoRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   background: radial-gradient(#000000, #0f0f0f);
   overflow: hidden;
@@ -41,7 +47,7 @@ header h1 {
         0 0 10px #ff0000,
         0 0 20px #ff0000,
         0 0 30px #ff0000;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'SD Dystopian', sans-serif;
     animation: glowSteganos 2s ease-in-out infinite;
     margin-top: 0;
 }
