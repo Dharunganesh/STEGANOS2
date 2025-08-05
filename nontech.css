@@ -1,0 +1,55 @@
+@font-face{
+    font-family: 'dystopian';
+    src: url(font/Sddystopiandemo-GO7xa.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+html{
+    background-image: url(background/blackbg2.jpg);
+}
+
+header h1{
+    margin-top: 0;
+    text-align: center;
+    color: red;
+    font-size: 5.0rem;
+    text-shadow: 
+    0px 0px 10px rgb(rgb(249, 8, 8))
+    0px 0px 20px rgb(rgb(249, 8, 8))
+    0px 0px 30px rgb(rgb(249, 8, 8));
+    font-family: 'dystopian', sans-serif;
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow{
+    0% { text-shadow: 0 0 5px red; }
+  50% { text-shadow: 0 0 20px red; }
+  100% { text-shadow: 0 0 5px red; }
+}
+
+.main{
+    align-items: center;
+    text-align: center;
+    
+}
+
+.event{
+    background-color: brown;
+    border: 2px solid brown;
+    border-radius: 20px;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 240px;
+    height: 300px;
+    margin-bottom: 40px;
+    box-shadow: 0px 0px 20px rgba(255,0,0,0.4),0px 0px 20px rgba(255,0,0,0.4);
+    transition:transform 0.5s ease;
+}
+
+.event:hover{
+    transform: scale(1.15);
+}
