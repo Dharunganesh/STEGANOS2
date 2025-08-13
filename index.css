@@ -6,7 +6,7 @@
 }
 body {
   background: radial-gradient(#000000, #0f0f0f);
-  
+  margin-top:0px;
 }
 
 body::before {
@@ -123,6 +123,7 @@ color: white;
   transform: scale(1.03);
   box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4);
 }
+
 
 
 
