@@ -117,9 +117,10 @@ color: white;
   backdrop-filter: blur(4px);
   box-shadow: 0 0 20px  rgba(255, 0, 0, 0.6);
   transition: transform 0.50s ease, box-shadow 0.3s ease;
-  width: 1077px;
+  width: 80vw;
 }
 .para:hover{
   transform: scale(1.03);
   box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4);
 }
+
