@@ -106,7 +106,7 @@ color: white;
   line-height: 1.5;
   align-items: center;
   border: 1px solid rgba(255, 0, 0, 0.2);
-  margin-top: 100px;
+  margin-top: 20vh;
   display: flex;
   flex-direction: column;
   height: 310px;
@@ -123,5 +123,6 @@ color: white;
   transform: scale(1.03);
   box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4);
 }
+
 
 
