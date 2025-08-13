@@ -109,7 +109,7 @@ color: white;
   margin-top: 20vh;
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: fit-content;
   margin-left: 10vw;
   margin-bottom: 60px;
   border-radius: 16px;
@@ -123,6 +123,7 @@ color: white;
   transform: scale(1.03);
   box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4);
 }
+
 
 
 
