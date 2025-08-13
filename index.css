@@ -49,6 +49,7 @@ header h1 {
     font-family: 'SD Dystopian', sans-serif;
     animation: glowSteganos 2s ease-in-out infinite;
     margin-top: 0;
+  margin-bottom:0px;
 }
 
 @keyframes glowSteganos {
@@ -123,6 +124,7 @@ color: white;
   transform: scale(1.03);
   box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4),0 0 40px rgba(255, 0, 0, 0.4);
 }
+
 
 
 
