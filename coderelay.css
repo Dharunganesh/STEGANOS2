@@ -15,7 +15,6 @@ header{
 p{
     color: #0f0;
     font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
     margin-top: 8vh;
     padding: 20px;
 }
@@ -26,4 +25,5 @@ h2{
     padding-left: 43%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 10vh;
+
 }
