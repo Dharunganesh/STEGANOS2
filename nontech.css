@@ -1,76 +1,69 @@
-@font-face{
-    font-family: 'dystopian';
-    src: url(font/Sddystopiandemo-GO7xa.otf);
-    font-weight: normal;
-    font-style: normal;
+@font-face {
+  font-family: 'SD Dystopian';
+  src: url('font/SDDystopianDemoRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-
-body{
+body {
     color: white;
+    font-family: 'Rajdhani', sans-serif;
 }
 
-h2{
-    color: white;font-family: 'Orbitron', sans-serif;
-}
-
-p{
-    font-family: 'Rajdhani', sans-serif;color: white;padding: 20px;
-}
-
-html{
-    background: url(background/blackbg2.jpg)no-repeat center center fixed;
-    background-size:cover;
-    z-index: -1;
-    opacity:1.5;
-}
-
-h1{
-    font-family: 'Orbitron', sans-serif;
-}
-
-header h1{
-    margin-top: 0;
+header{
+    color:red;
     text-align: center;
-    color: red;
-    font-size: 5.0rem;
-    text-shadow: 
-    0px 0px 10px rgb(rgb(249, 8, 8))
-    0px 0px 20px rgb(rgb(249, 8, 8))
-    0px 0px 30px rgb(rgb(249, 8, 8));
-    font-family: 'dystopian', sans-serif;
+}
+h1, h2 {
+    font-family: 'Orbitron', sans-serif;
     animation: pulseGlow 2s infinite;
 }
-
-@keyframes pulseGlow{
-    0% { text-shadow: 0 0 5px red; }
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 5px red; }
   50% { text-shadow: 0 0 20px red; }
   100% { text-shadow: 0 0 5px red; }
 }
 
-.main{
-    align-items: center;
+.container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 30px 0;
 }
-
-.event{
-    background-color: brown;
-    border: 2px solid brown;
-    border-radius: 20px;
+.container::-webkit-scrollbar {
+    display: none;
+}
+.card {
+    height: 300px;
+    margin: 20px auto;
     width: 60%;
+    background: brown;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    opacity: 0.4;
+    transform: scale(0.9);
+    text-align:center;
     display: flex;
     flex-direction: column;
-    gap: 7px;
-    align-items: center;
-    text-align: center;
-    margin-left: 240px;
-    height: 300px;
-    margin-bottom: 40px;
-    box-shadow: 0px 0px 20px rgba(255,0,0,0.4),0px 0px 20px rgba(255,0,0,0.4);
-    transition:transform 0.5s ease;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+.card:first-child {
+  margin-top: 0px;
 }
 
+.card.active {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow:
+        0 0 30px rgba(255, 0, 0, 0.6),
+        0 0 10px rgba(255, 0, 0, 0.4);
+}
 
+.register {
+    text-align: center;
+    margin-top: 20px;
+}
 
-a {
+.register a {
     display: inline-block;
     padding: 12px 24px;
     background-color: #ff3333;
@@ -80,14 +73,37 @@ a {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
     transition: background-color 0.3s ease, transform 0.2s ease;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-a:hover{
-    transform: scale(1.03);
-    background-color: rgb(198, 11, 11);
+.register a:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+.card p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+header h1 {
+    font-size: 5.2rem;
+    color: #ff3333;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 30px #ff0000;
+    font-family: 'SD Dystopian', sans-serif;
+    animation: glowSteganos 2s ease-in-out infinite;
+    margin-top: 0;
 }
 
-.event:hover{
-    transform: scale(1.10);
+@keyframes glowSteganos {
+  0%, 100% { text-shadow: 0 0 10px #ff0000; }
+  50% { text-shadow: 0 0 25px #ff0000; }
+}
+
+html{
+    background: url(background/blackbg2.jpg)no-repeat center center fixed;
+    background-size:cover;
+    z-index: -1;
+    opacity:1.5;
 }
