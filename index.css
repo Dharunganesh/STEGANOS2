@@ -6,7 +6,7 @@
 }
 body {
   background: radial-gradient(#000000, #0f0f0f);
-  
+  margin-top:0px;
 }
 
 body::before {
@@ -49,6 +49,7 @@ header h1 {
     font-family: 'SD Dystopian', sans-serif;
     animation: glowSteganos 2s ease-in-out infinite;
     margin-top: 0;
+  margin-bottom:0px;
 }
 
 @keyframes glowSteganos {
@@ -69,19 +70,24 @@ header h1 {
 .card {
     width: 40vw;
     height: 200px;
-  
+    font-family: 'Orbitron', sans-serif;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     font-size: 1.5rem;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
     transition: transform 0.50s ease, box-shadow 0.3s ease;
     opacity: 1.5;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(4px);
-    border: 1px solid black;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    box-shadow:
+        0 0 10px rgba(255, 0, 0, 0.3),
+        0 0 20px rgba(255, 0, 0, 0.2),
+        0 0 40px rgba(255, 0, 0, 0.1);
 }
 .card:hover {
     transform: scale(1.05);
@@ -95,6 +101,13 @@ a {
 text-decoration: none;
 color: white;
 }
+
 .para{
-  text-align:center;
+  text-align: center;
 }
+
+
+
+
+
+
