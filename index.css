@@ -63,12 +63,12 @@ header h1 {
     justify-content: center;
     align-items: center;
     min-height: 40vh;
-    gap: 40px;
+    gap: 30px;
     margin-top:0;           
 }
 
 .card {
-    width: 40vw;
+    width: 43vw;
     height: 200px;
     font-family: 'Orbitron', sans-serif;
     border-radius: 16px;
@@ -105,6 +105,7 @@ color: white;
 .para{
   text-align: center;
 }
+
 
 
 
