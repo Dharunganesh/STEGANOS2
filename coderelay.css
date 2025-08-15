@@ -1,29 +1,25 @@
+header{
+    font-size: 2rem;
+    padding-left: 35%;
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
 html{
     background: url(background/blackbg2.jpg) no-repeat center center fixed;
     background-size: cover;
     z-index: -1;
     opacity: 1.5;
 }
-header{
-    padding-left: 33%;
-    color: red;
-    font-size: 7vh;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: bold;
-}
-
-p{
-    color: #0f0;
-    font-family: 'Courier New', Courier, monospace;
-    margin-top: 8vh;
-    padding: 20px;
-}
 
 h2{
     color: red;
-    font-size: 5vh;
     padding-left: 43%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-top: 10vh;
+}
 
+p{
+    color: #0f0;padding: 20px; font-family: 'Courier New', monospace;
+    min-height:4rem;
 }
