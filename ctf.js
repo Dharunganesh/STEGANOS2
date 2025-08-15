@@ -3,10 +3,11 @@ let i = 0;
 
 function typeEffect() {
   if (i < text.length) {
-    document.getElementById("typewriter").innerHTML += text.charAt(i);
+    document.getElementById("p").innerHTML += text.charAt(i);
     i++;
     setTimeout(typeEffect, 20); 
   }
 }
+
 
 window.onload = typeEffect;
