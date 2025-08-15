@@ -35,7 +35,7 @@ h1, h2 {
 .card {
     height: 300px;
     margin: 20px auto;
-    width: 60%;
+    width: 65%;
     background: brown;
     border-radius: 16px;
     transition: all 0.3s ease;
@@ -107,3 +107,4 @@ html{
     z-index: -1;
     opacity:1.5;
 }
+
