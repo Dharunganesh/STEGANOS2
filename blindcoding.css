@@ -1,6 +1,6 @@
 header{
-    font-size: 7vh;
-    padding-left: 32%;
+    font-size: 2rem;
+    padding-left: 35%;
     color: red;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
@@ -17,11 +17,9 @@ h2{
     color: red;
     padding-left: 43%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-top: 10vh;
-    font-size: 5vh;
-
 }
 
 p{
-    color: #0f0;padding: 20px; font-family: 'Courier New', monospace;margin-top: 8vh;
+    color: #0f0;padding: 20px; font-family: 'Courier New', monospace;
+    min-height:4rem;
 }
