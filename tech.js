@@ -1,45 +1,50 @@
 const cards = document.querySelectorAll(".card");
-cards.forEach(card => {
-  card.addEventListener("click", handleHighlight);
-  card.addEventListener("touchstart", handleHighlight);
-});
+const container = document.querySelector(".container");
 
-cards.forEach(card => {
-  card.addEventListener("click", () => {
-    cards.forEach(c => c.classList.remove("active"));
-    card.classList.add("active");
-    card.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-  });
-});
-
-
-function handleHighlight(e) {
-  cards.forEach(c => c.classList.remove("active"));
-  e.currentTarget.classList.add("active");
+function setActiveCard(card) {
+  document.querySelector(".card.active")?.classList.remove("active");
+  card.classList.add("active");
 }
 
+function handleClick(e) {
+  const card = e.currentTarget;
+  setActiveCard(card);
+  card.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+cards.forEach(card => {
+  card.addEventListener("click", handleClick);
+  card.addEventListener("touchstart", handleClick);
+});
+
 function highlightVisibleCard() {
-  let mid = window.innerHeight / 2;
+  const mid = window.innerHeight / 2;
   let closest = null;
   let closestDist = Infinity;
 
-  cards.forEach(card => {
-    let rect = card.getBoundingClientRect();
-    let cardCenter = rect.top + rect.height / 2;
-    let dist = Math.abs(mid - cardCenter);
-
+  for (let card of cards) {
+    const rect = card.getBoundingClientRect();
+    const cardCenter = rect.top + rect.height / 2;
+    const dist = Math.abs(mid - cardCenter);
     if (dist < closestDist) {
       closest = card;
       closestDist = dist;
     }
-  });
+  }
 
-  cards.forEach(card => card.classList.remove("active"));
-  if (closest) closest.classList.add("active");
+  if (closest) setActiveCard(closest);
 }
 
-document.querySelector('.container').addEventListener('scroll', highlightVisibleCard);
-window.addEventListener('load', highlightVisibleCard);
+// Throttle scroll to ~60fps max
+let ticking = false;
+container.addEventListener("scroll", () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      highlightVisibleCard();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+window.addEventListener("load", highlightVisibleCard);
