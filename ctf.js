@@ -5,9 +5,10 @@ function typeEffect() {
   if (i < text.length) {
     document.getElementById("p").innerHTML += text.charAt(i);
     i++;
-    setTimeout(typeEffect, 20); 
+    setTimeout(typeEffect, 0.1); 
   }
 }
 
 
 window.onload = typeEffect;
+
