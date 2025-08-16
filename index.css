@@ -1,3 +1,9 @@
+@media (max-width: 400px) {
+  .card {
+    font-size: 1.2rem;  /* slightly smaller */
+  }
+}
+
 @font-face {
   font-family: 'SD Dystopian';
   src: url('font/SDDystopianDemoRegular.woff') format('woff');
@@ -80,10 +86,11 @@ header h1 {
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
     transition: transform 0.50s ease, box-shadow 0.3s ease;
     opacity: 1.5;
-    word-wrap: break-word;     /* break long words */
-    overflow-wrap: break-word; /* modern equivalent */
-    text-overflow: ellipsis;   /* optional: adds ... if too long */
-    white-space: normal;       /* allows wrapping */
+    white-space: normal;       /* allow text to wrap */
+    word-wrap: break-word;     /* break long words if needed */
+    text-align: center;        /* keep text centered */
+    padding: 10px;             /* add some breathing space */
+    box-sizing: border-box;    /* ensure padding doesn’t overflow */
     cursor: pointer;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(4px);
@@ -109,6 +116,7 @@ color: white;
 .para{
   text-align: center;
 }
+
 
 
 
