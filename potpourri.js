@@ -1,4 +1,4 @@
-const text="Blind Coding isn’t just about writing code — it’s about coding with your mind’s eye.With your screen hidden, every keystroke is a leap of faith, guided only by logic, memory, and precision.It’s where syntax mastery meets raw problem-solving power.No backspaces, no previews — just you, your brain, and the code you believe in."
+const text="In the chaos of riddles, reflex, and razor-sharp memory, only the quickest minds and steadiest hands will survive. Potpourri isn’t just a game — it’s a gauntlet of twists. From decoding hidden connections to flipping fate itself, every second drags you closer to victory… or collapse. Can your team outthink, outflip, and outstack the rest?Every second is a twist.Crack the connections, flip with precision, and stack with speed. Potpourri fuses brainpower, reflex, and memory into one relentless challenge."
 let index=0
 
 function func(){
@@ -9,5 +9,6 @@ function func(){
     }
 }
 func()
+
 
 window.onload=typeEffect
