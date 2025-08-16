@@ -75,7 +75,7 @@ header h1 {
 
 .card {
     width: 90%;
-    max-width: 350px;
+    max-width: 450px;
     min-width: 150px;
     text-align: center;
     white-space: normal;
@@ -117,6 +117,7 @@ color: white;
 .para{
   text-align: center;
 }
+
 
 
 
