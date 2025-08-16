@@ -1,4 +1,7 @@
-const text="Blind Coding isn’t just about writing code — it’s about coding with your mind’s eye.With your screen hidden, every keystroke is a leap of faith, guided only by logic, memory, and precision.It’s where syntax mastery meets raw problem-solving power.No backspaces, no previews — just you, your brain, and the code you believe in."
+const text="The battleground awaits. Bullets, strategy, and survival instincts collide in this digital warzone. Squad up, drop in, and fight for dominance — every kill, every placement, every heartbeat counts. Will you crumble under pressure or rise to claim the ultimate chicken dinner? The zone is shrinking… are you ready to conquer it?
+The battleground decides the brave.
+Shots fired, squads clashing, and strategies unfolding — every move shapes victory. Survival is the only law.
+"
 let index=0
 
 function func(){
@@ -9,5 +12,6 @@ function func(){
     }
 }
 func()
+
 
 window.onload=typeEffect
