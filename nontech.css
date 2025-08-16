@@ -47,10 +47,7 @@ header h1{
   100% { text-shadow: 0 0 5px red; }
 }
 
-.main{
-    align-items: center;
-    justify-content: center;
-}
+
 
 .event{
     background-color: brown;
@@ -91,3 +88,4 @@ a:hover{
 .event:hover{
     transform: scale(1.10);
 }
+
