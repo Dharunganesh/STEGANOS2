@@ -4,10 +4,9 @@
   font-weight: normal;
   font-style: normal;
 }
-
 body {
   background: radial-gradient(#000000, #0f0f0f);
-  margin: 0;
+  margin-top:0px;
 }
 
 body::before {
@@ -17,37 +16,40 @@ body::before {
   background: url(background/indexbackground.png) no-repeat center center fixed;
   background-size: cover;
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.5  ;
 }
-
 header {
-  text-align: center;
-  margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  align-items: center;       
+  justify-content: center;   
+  gap: 20px;                 
   margin-top: 30px;
-  margin-bottom: -20px;
+  margin-bottom:-20px;
 }
 
 .title {
   font-family: 'Orbitron', sans-serif;
   color: white;
-  font-size: clamp(1rem, 3vw, 1.8rem);
+  font-size: 1.8rem;
   letter-spacing: 2px;
 }
 
 header h1 {
-  font-size: clamp(2.5rem, 6vw, 5.2rem);
-  color: #ff3333;
-  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
-  font-family: 'SD Dystopian', sans-serif;
-  animation: glowSteganos 2s ease-in-out infinite;
-  margin: 0;
+    font-size: 5.2rem;
+    color: #ff3333;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 30px #ff0000;
+    font-family: 'SD Dystopian', sans-serif;
+    animation: glowSteganos 2s ease-in-out infinite;
+    margin-top: 0;
+  margin-bottom:0px;
 }
 
 @keyframes glowSteganos {
@@ -55,56 +57,57 @@ header h1 {
   50% { text-shadow: 0 0 25px #ff0000; }
 }
 
+
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap; /* responsive */
-  gap: 20px;
-  padding: 20px;
-  min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+    gap: 30px;
+    margin-top:0;           
 }
 
 .card {
-  width: 90%;
-  max-width: 400px;
-  height: clamp(150px, 20vh, 220px);
-  font-family: 'Orbitron', sans-serif;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  transition: transform 0.5s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 0, 0, 0.2);
-  box-shadow:
-    0 0 10px rgba(255, 0, 0, 0.3),
-    0 0 20px rgba(255, 0, 0, 0.2),
-    0 0 40px rgba(255, 0, 0, 0.1);
+    width: 43vw;
+    height: 200px;
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    transition: transform 0.50s ease, box-shadow 0.3s ease;
+    opacity: 1.5;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    box-shadow:
+        0 0 10px rgba(255, 0, 0, 0.3),
+        0 0 20px rgba(255, 0, 0, 0.2),
+        0 0 40px rgba(255, 0, 0, 0.1);
 }
-
 .card:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 20px rgba(255, 0, 0, 0.6),
-    0 0 40px rgba(255, 0, 0, 0.4),
-    0 0 60px rgba(255, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.6),
+        0 0 40px rgba(255, 0, 0, 0.4),
+        0 0 60px rgba(255, 0, 0, 0.2)
 }
 
 a {
-  text-decoration: none;
-  color: white;
+text-decoration: none;
+color: white;
 }
 
-.para {
+.para{
   text-align: center;
 }
 
-@media (max-width: 600px) {
-  header h1 { font-size: 3rem; }
-  .title { font-size: 1.2rem; }
-}
+
+
+
+
+
