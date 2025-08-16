@@ -81,9 +81,6 @@ header h1 {
     white-space: normal;
     word-wrap: break-word;
     margin-left:10px;
-    padding-left:10px;
-    padding-right:10px;
-    box-sizing: border-box;
     height: 200px;
     font-family: 'Orbitron', sans-serif;
     border-radius: 16px;
@@ -120,6 +117,7 @@ color: white;
 .para{
   text-align: center;
 }
+
 
 
 
