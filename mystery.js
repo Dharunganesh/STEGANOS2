@@ -1,4 +1,4 @@
-const text="Blind Coding isn’t just about writing code — it’s about coding with your mind’s eye.With your screen hidden, every keystroke is a leap of faith, guided only by logic, memory, and precision.It’s where syntax mastery meets raw problem-solving power.No backspaces, no previews — just you, your brain, and the code you believe in."
+const text="A body lies cold. The room reeks of secrets. Every clue you miss brings the killer closer to freedom. Dive into a twisted tale of lies, alibis, and hidden motives. Search the scene, interrogate the suspects, and stitch the truth together before time runs out. The murderer is among you… will you unmask them?The crime scene tells the story.Clues hide in plain sight, suspects weave their lies, and only sharp deduction unmasks the truth. Justice waits for no one."
 let index=0
 
 function func(){
@@ -9,5 +9,6 @@ function func(){
     }
 }
 func()
+
 
 window.onload=typeEffect
