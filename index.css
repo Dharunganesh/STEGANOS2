@@ -74,7 +74,12 @@ header h1 {
 }
 
 .card {
-    width: 43vw;
+    width: 90%;
+    max-width: 350px;
+    min-width: 150px;
+    text-align: center;
+    white-space: normal;   /* allow line breaks */
+    word-wrap: break-word;
     height: 200px;
     font-family: 'Orbitron', sans-serif;
     border-radius: 16px;
@@ -86,11 +91,12 @@ header h1 {
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
     transition: transform 0.50s ease, box-shadow 0.3s ease;
     opacity: 1.5;
-    white-space: normal;       /* allow text to wrap */
-    word-wrap: break-word;     /* break long words if needed */
-    text-align: center;        /* keep text centered */
-    padding: 10px;             /* add some breathing space */
-    box-sizing: border-box;    /* ensure padding doesn’t overflow */
+  width: 90%;
+  max-width: 350px;
+  min-width: 150px;
+  text-align: center;
+  white-space: normal;   /* allow line breaks */
+  word-wrap: break-word;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(4px);
@@ -116,6 +122,7 @@ color: white;
 .para{
   text-align: center;
 }
+
 
 
 
