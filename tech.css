@@ -36,6 +36,7 @@ h1, h2 {
     height: fit-content;
     margin: 20px auto;
     width: 65%;
+    padding-bottom:3px;
     background: brown;
     border-radius: 16px;
     transition: all 0.3s ease;
@@ -107,6 +108,7 @@ html{
     z-index: -1;
     opacity:1.5;
 }
+
 
 
 
