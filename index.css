@@ -8,7 +8,8 @@
 body {
   background: radial-gradient(#000000, #0f0f0f);
   margin-top: 0px;
-  overflow-x: hidden; /* Only addition - prevent horizontal scroll */
+  overflow-x: hidden;
+  font-family: 'Orbitron', sans-serif;
 }
 
 body::before {
@@ -28,9 +29,9 @@ header {
 
 .header {
   display: flex;
-  align-items: center;       
-  justify-content: center;   
-  gap: 20px;                 
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
   margin-top: 30px;
   margin-bottom: -20px;
 }
@@ -45,10 +46,7 @@ header {
 header h1 {
   font-size: 5.2rem;
   color: #ff3333;
-  text-shadow:
-    0 0 10px #ff0000,
-    0 0 20px #ff0000,
-    0 0 30px #ff0000;
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
   font-family: 'SD Dystopian', sans-serif;
   animation: glowSteganos 2s ease-in-out infinite;
   margin-top: 0;
@@ -60,52 +58,69 @@ header h1 {
   50% { text-shadow: 0 0 25px #ff0000; }
 }
 
-.container {
+/* Desktop cards */
+.desktop-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 40vh;
   gap: 30px;
-  margin-top: 0;
-  padding: 0 15px; /* Only change - add side padding */
-  box-sizing: border-box; /* Only addition */
+  padding: 40px 20px;
 }
 
+/* Mobile carousel */
+.mobile-container {
+  display: none;
+  position: relative;
+  width: 100vw;
+  height: 300px;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  width: 200vw;
+  height: 100%;
+  transition: transform 0.3s ease;
+  transform: translateX(0);
+}
+
+.carousel-slide {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Card styles */
 .card {
-  width: 90%;
-  max-width: 450px;
-  min-width: 150px;
-  text-align: center;
-  white-space: normal;
-  word-wrap: break-word;
-  margin-left: 10px;
+  width: 50vw;
+  max-width: 400px;
   height: 200px;
   font-family: 'Orbitron', sans-serif;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   font-size: 1.5rem;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
-  transition: transform 0.50s ease, box-shadow 0.3s ease;
-  opacity: 1.5;
   cursor: pointer;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 0, 0, 0.2);
-  box-shadow:
-    0 0 10px rgba(255, 0, 0, 0.3),
-    0 0 20px rgba(255, 0, 0, 0.2),
-    0 0 40px rgba(255, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3),
+              0 0 20px rgba(255, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow:
-    0 0 20px rgba(255, 0, 0, 0.6),
-    0 0 40px rgba(255, 0, 0, 0.4),
-    0 0 60px rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6),
+              0 0 40px rgba(255, 0, 0, 0.4);
+}
+
+.card h2 {
+  color: white;
+  text-align: center;
 }
 
 a {
@@ -113,6 +128,50 @@ a {
   color: white;
 }
 
+/* Indicators */
+.indicators {
+  display: none;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #ff0000;
+  transform: scale(1.3);
+}
+
+.swipe-hint {
+  display: none;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  margin: 10px 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .desktop-container { display: none; }
+  .mobile-container { display: block; }
+  .indicators { display: flex; }
+  .swipe-hint { display: block; }
+  header h1 { font-size: 3rem; }
+  .title { font-size: 1.4rem; }
+  .card { height: 180px; font-size: 1.3rem; }
+}
+
 .para {
   text-align: center;
+  padding: 20px;
+  color: white;
 }
