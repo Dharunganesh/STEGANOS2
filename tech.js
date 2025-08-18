@@ -1,57 +1,62 @@
-const container = document.querySelector('.container');
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll(".card");
+cards.forEach(card => {
+  card.addEventListener("click", handleHighlight);
+  card.addEventListener("touchstart", handleHighlight);
+});
 
-function setActive(card) {
-  cards.forEach(c => c.classList.remove('active'));
-  if (card) card.classList.add('active');
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    cards.forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
+    card.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  });
+});
+
+
+function handleHighlight(e) {
+  cards.forEach(c => c.classList.remove("active"));
+  e.currentTarget.classList.add("active");
 }
 
-function highlightMostVisibleCard() {
-  if (!container) return;
+function highlightVisibleCard() {
+  let container = document.querySelector('.container');
+  let mid = window.innerHeight / 2;
+  let closest = null;
+  let closestDist = Infinity;
 
-  // If we're at the very top, keep the first card active.
-  if (container.scrollTop <= 0) {
-    setActive(cards[0]);
+  // edge case: top
+  if (container.scrollTop === 0) {
+    cards.forEach(c => c.classList.remove("active"));
+    cards[0].classList.add("active");
     return;
   }
 
-  const containerRect = container.getBoundingClientRect();
-  let maxVisibleHeight = 0;
-  let mostVisibleCard = null;
+  // edge case: bottom
+  if (container.scrollHeight - container.scrollTop === container.clientHeight) {
+    cards.forEach(c => c.classList.remove("active"));
+    cards[cards.length - 1].classList.add("active");
+    return;
+  }
 
+  // normal middle case
   cards.forEach(card => {
-    const rect = card.getBoundingClientRect();
-    const visibleTop = Math.max(rect.top, containerRect.top);
-    const visibleBottom = Math.min(rect.bottom, containerRect.bottom);
-    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+    let rect = card.getBoundingClientRect();
+    let cardCenter = rect.top + rect.height / 2;
+    let dist = Math.abs(mid - cardCenter);
 
-    if (visibleHeight > maxVisibleHeight) {
-      maxVisibleHeight = visibleHeight;
-      mostVisibleCard = card;
+    if (dist < closestDist) {
+      closest = card;
+      closestDist = dist;
     }
   });
 
-  setActive(mostVisibleCard);
+  cards.forEach(card => card.classList.remove("active"));
+  if (closest) closest.classList.add("active");
 }
 
-// Click/touch selects and centers the card.
-function onCardSelect(e) {
-  const card = e.currentTarget;
-  setActive(card);
-  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
 
-cards.forEach(card => {
-  card.addEventListener('click', onCardSelect);
-  card.addEventListener('touchstart', onCardSelect, { passive: true });
-});
-
-// Highlight on scroll (rAF to keep it smooth).
-container.addEventListener('scroll', () => {
-  requestAnimationFrame(highlightMostVisibleCard);
-});
-
-// On load: show the first card as active.
-window.addEventListener('load', () => {
-  setActive(cards[0]);
-});
+document.querySelector('.container').addEventListener('scroll', highlightVisibleCard);
+window.addEventListener('load', highlightVisibleCard);
