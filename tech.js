@@ -1,84 +1,63 @@
 const cards = document.querySelectorAll(".card");
-let activeCard = null;
+let activeIndex = 0;
+let lastScrollTop = 0;
 
-function setActive(card) {
-    if (activeCard === card) return;
+function setActive(index) {
+    if (index === activeIndex) return;
     
     cards.forEach(c => c.classList.remove("active"));
-    card.classList.add("active");
-    activeCard = card;
+    cards[index].classList.add("active");
+    activeIndex = index;
 }
 
 // Set first card active on load
-setActive(cards[0]);
+setActive(0);
 
-// Desktop: hover events
-cards.forEach(card => {
-    card.addEventListener("mouseenter", () => {
-        setActive(card);
+// Check if device is mobile
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+if (isMobile) {
+    // Mobile: Sequential highlighting on scroll
+    const container = document.querySelector('.container');
+    let scrollTimeout;
+    
+    container.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const currentScrollTop = container.scrollTop;
+            
+            if (currentScrollTop > lastScrollTop) {
+                // Scrolling down - move to next card
+                if (activeIndex < cards.length - 1) {
+                    setActive(activeIndex + 1);
+                }
+            } else if (currentScrollTop < lastScrollTop) {
+                // Scrolling up - move to previous card
+                if (activeIndex > 0) {
+                    setActive(activeIndex - 1);
+                }
+            }
+            
+            lastScrollTop = currentScrollTop;
+        }, 100);
     });
     
+} else {
+    // Desktop: Use hover
+    cards.forEach((card, index) => {
+        card.addEventListener("mouseenter", () => {
+            setActive(index);
+        });
+    });
+}
+
+// Click/tap to scroll (both platforms)
+cards.forEach((card, index) => {
     card.addEventListener("click", () => {
+        setActive(index);
         card.scrollIntoView({
             behavior: "smooth",
             block: "center"
         });
     });
-});
-
-// Mobile: touch events
-cards.forEach(card => {
-    // Touch start - highlight immediately
-    card.addEventListener("touchstart", (e) => {
-        setActive(card);
-    }, { passive: true });
-    
-    // Touch end - scroll to center if it was a tap (not a scroll)
-    card.addEventListener("touchend", (e) => {
-        // Small delay to differentiate tap from scroll
-        setTimeout(() => {
-            if (activeCard === card) {
-                card.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-            }
-        }, 100);
-    }, { passive: true });
-});
-
-// Optional: scroll-based highlighting as fallback
-let scrollTimeout;
-const container = document.querySelector('.container');
-
-function findCenterCard() {
-    const containerRect = container.getBoundingClientRect();
-    const centerY = containerRect.top + containerRect.height / 2;
-    
-    let closestCard = cards[0];
-    let closestDistance = Infinity;
-    
-    cards.forEach(card => {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenterY = cardRect.top + cardRect.height / 2;
-        const distance = Math.abs(centerY - cardCenterY);
-        
-        if (distance < closestDistance) {
-            closestDistance = distance;
-            closestCard = card;
-        }
-    });
-    
-    setActive(closestCard);
-}
-
-// Gentle scroll fallback (only when not hovering/touching)
-container.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        // Only auto-highlight if no recent hover/touch activity
-        if (!document.querySelector('.card:hover')) {
-            findCenterCard();
-        }
-    }, 200);
 });
