@@ -129,26 +129,22 @@ a {
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
   header h1 {
-    font-size: 3.5rem; /* Smaller font for mobile */
+    font-size: 4rem; /* Keep it bigger for mobile impact */
   }
   
   .title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
   
   .container {
-    /* Keep horizontal layout - it looks godly! */
     gap: 15px;
-    padding: 15px;
-    min-height: 30vh;
+    padding: 0 15px; /* Just side padding */
   }
   
   .card {
-    /* Ensure cards fit properly in viewport */
-    max-width: 45%; /* Prevent cards from being too wide */
-    min-width: 140px; /* Minimum readable size */
-    height: 120px; /* Smaller height for mobile */
-    font-size: 1.2rem;
+    min-width: 140px; /* Smaller min for mobile */
+    height: 160px; /* Proportional height */
+    font-size: 1.3rem;
   }
 }
 
