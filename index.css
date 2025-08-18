@@ -161,17 +161,42 @@ a {
 
 /* Mobile styles */
 @media (max-width: 768px) {
+  /* Hide desktop row, show carousel */
   .desktop-container { display: none; }
-  .mobile-container { display: block; }
-  .indicators { display: flex; }
-  .swipe-hint { display: block; }
-  header h1 { font-size: 3rem; }
-  .title { font-size: 1.4rem; }
-  .card { height: 180px; font-size: 1.3rem; }
+  .mobile-container { display: block; height: auto; }
+  .carousel-track { height: auto; }
+  .carousel-slide { padding: 12px; }
+
+  /* Header sizing & spacing */
+  header { margin-top: 10px; }
+  .header { margin-top: 10px; margin-bottom: 0; }
+  header h1 { font-size: clamp(2.8rem, 8vw, 3.6rem); }
+  .title { font-size: clamp(1.2rem, 4.8vw, 1.6rem); }
+
+  /* Bigger cards */
+  .card {
+    width: 88vw;
+    max-width: none;
+    height: 230px;
+    font-size: clamp(1.1rem, 5.2vw, 1.6rem);
+  }
+
+  /* Indicators & hint */
+  .indicators { display: flex; justify-content: center; gap: 10px; margin: 8px 0 0; }
+  .dot { width: 12px; height: 12px; }
+  .swipe-hint { display: block; text-align: center; color: rgba(255,255,255,0.7); font-size: 0.95rem; margin: 6px 0 12px; }
+
+  /* Contact block tighter */
+  .para { padding: 10px 16px 24px; }
+
+  /* Optional subtle hover */
+  .card:hover { transform: scale(1.03); }
 }
+
 
 .para {
   text-align: center;
   padding: 20px;
   color: white;
 }
+
