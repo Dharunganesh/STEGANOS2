@@ -2,8 +2,6 @@ const cards = document.querySelectorAll(".card");
 let activeIndex = 0;
 
 function setActive(index) {
-    if (index === activeIndex) return;
-    
     cards.forEach(c => c.classList.remove("active"));
     cards[index].classList.add("active");
     activeIndex = index;
@@ -16,10 +14,13 @@ setActive(0);
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
 if (isMobile) {
-    // Mobile: Only tap to highlight
+    // Mobile: Only tap to highlight (always allow clicking)
     cards.forEach((card, index) => {
         card.addEventListener("click", () => {
-            setActive(index);
+            // Always set active, even if it's the same card
+            cards.forEach(c => c.classList.remove("active"));
+            card.classList.add("active");
+            activeIndex = index;
         });
     });
     
