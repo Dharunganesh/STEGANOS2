@@ -21,25 +21,31 @@ function handleHighlight(e) {
   e.currentTarget.classList.add("active");
 }
 
-function highlightVisibleCard() {
-  let mid = window.innerHeight / 2;
-  let closest = null;
-  let closestDist = Infinity;
+function highlightMostVisibleCard() {
+  let container = document.querySelector('.container');
+  let containerRect = container.getBoundingClientRect();
+
+  let maxVisibleHeight = 0;
+  let mostVisibleCard = null;
 
   cards.forEach(card => {
     let rect = card.getBoundingClientRect();
-    let cardCenter = rect.top + rect.height / 2;
-    let dist = Math.abs(mid - cardCenter);
 
-    if (dist < closestDist) {
-      closest = card;
-      closestDist = dist;
+    // calculate visible part of card inside container
+    let visibleTop = Math.max(rect.top, containerRect.top);
+    let visibleBottom = Math.min(rect.bottom, containerRect.bottom);
+    let visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+    if (visibleHeight > maxVisibleHeight) {
+      maxVisibleHeight = visibleHeight;
+      mostVisibleCard = card;
     }
   });
 
   cards.forEach(card => card.classList.remove("active"));
-  if (closest) closest.classList.add("active");
+  if (mostVisibleCard) mostVisibleCard.classList.add("active");
 }
 
 document.querySelector('.container').addEventListener('scroll', highlightVisibleCard);
 window.addEventListener('load', highlightVisibleCard);
+
