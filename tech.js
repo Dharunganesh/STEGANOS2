@@ -1,51 +1,63 @@
 const cards = document.querySelectorAll(".card");
 const container = document.querySelector('.container');
 let activeCard = null;
+let isScrolling = false;
 
-// Set active card
 function setActive(card) {
-    if (activeCard) {
-        activeCard.classList.remove("active");
-    }
+    if (activeCard === card) return;
+    
+    cards.forEach(c => c.classList.remove("active"));
     card.classList.add("active");
     activeCard = card;
 }
 
-// Initialize with first card
-setActive(cards[0]);
-
-// Simple IntersectionObserver - let it do its job
-const observer = new IntersectionObserver((entries) => {
-    let bestCard = null;
-    let bestRatio = 0;
+function findCenterCard() {
+    const containerRect = container.getBoundingClientRect();
+    const centerY = containerRect.top + containerRect.height / 2;
     
-    // Find the card with highest intersection ratio
-    entries.forEach(entry => {
-        if (entry.intersectionRatio > bestRatio) {
-            bestRatio = entry.intersectionRatio;
-            bestCard = entry.target;
+    let closestCard = null;
+    let closestDistance = Infinity;
+    
+    cards.forEach(card => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        const distance = Math.abs(centerY - cardCenterY);
+        
+        if (distance < closestDistance) {
+            closestDistance = distance;
+            closestCard = card;
         }
     });
     
-    // Only update if we have a visible card and it's different
-    if (bestCard && bestCard !== activeCard && bestRatio > 0.3) {
-        setActive(bestCard);
+    if (closestCard && !isScrolling) {
+        setActive(closestCard);
     }
-}, {
-    root: container,
-    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+}
+
+// Set first card active on load
+setActive(cards[0]);
+
+// Throttled scroll handler
+let scrollTimeout;
+container.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(findCenterCard, 10);
 });
 
-// Observe all cards
-cards.forEach(card => observer.observe(card));
-
-// Click handler
+// Click handlers
 cards.forEach(card => {
     card.addEventListener("click", () => {
+        isScrolling = true;
         setActive(card);
         card.scrollIntoView({
             behavior: "smooth",
             block: "center"
         });
+        setTimeout(() => {
+            isScrolling = false;
+        }, 500);
     });
 });
+
+// Initial check
+findCenterCard();
