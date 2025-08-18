@@ -129,7 +129,7 @@ a {
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
   header h1 {
-    font-size: 4rem; /* Keep it bigger for mobile impact */
+    font-size: 4rem;
   }
   
   .title {
@@ -138,13 +138,19 @@ a {
   
   .container {
     gap: 15px;
-    padding: 0 15px; /* Just side padding */
+    padding: 0 15px;
   }
   
   .card {
-    min-width: 140px; /* Smaller min for mobile */
-    height: 160px; /* Proportional height */
+    width: calc(50% - 7.5px); /* Half width minus half gap */
+    max-width: none;
+    min-width: 140px;
+    height: 160px;
     font-size: 1.3rem;
+  }
+  
+  a {
+    display: flex; /* Flex for mobile to fill card properly */
   }
 }
 
