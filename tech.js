@@ -2,7 +2,7 @@ const cards = document.querySelectorAll(".card");
 const container = document.querySelector('.container');
 let activeCard = null;
 
-// Set first card as active on load
+// Set active card
 function setActive(card) {
     if (activeCard) {
         activeCard.classList.remove("active");
@@ -14,39 +14,26 @@ function setActive(card) {
 // Initialize with first card
 setActive(cards[0]);
 
-// IntersectionObserver with better thresholds
+// Simple IntersectionObserver - let it do its job
 const observer = new IntersectionObserver((entries) => {
-    const visibleCards = entries
-        .filter(entry => entry.intersectionRatio > 0)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    let bestCard = null;
+    let bestRatio = 0;
     
-    if (visibleCards.length > 0) {
-        const mostVisible = visibleCards[0].target;
-        
-        // Special handling for first and last cards
-        const scrollTop = container.scrollTop;
-        const scrollHeight = container.scrollHeight;
-        const containerHeight = container.clientHeight;
-        
-        let targetCard = mostVisible;
-        
-        // Force first card when near top
-        if (scrollTop < 100) {
-            targetCard = cards[0];
+    // Find the card with highest intersection ratio
+    entries.forEach(entry => {
+        if (entry.intersectionRatio > bestRatio) {
+            bestRatio = entry.intersectionRatio;
+            bestCard = entry.target;
         }
-        // Force last card when near bottom
-        else if (scrollTop + containerHeight > scrollHeight - 100) {
-            targetCard = cards[cards.length - 1];
-        }
-        
-        if (targetCard !== activeCard) {
-            setActive(targetCard);
-        }
+    });
+    
+    // Only update if we have a visible card and it's different
+    if (bestCard && bestCard !== activeCard && bestRatio > 0.3) {
+        setActive(bestCard);
     }
 }, {
     root: container,
-    threshold: [0, 0.1, 0.3, 0.5, 0.7, 0.9, 1],
-    rootMargin: "-10% 0px -10% 0px"
+    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 });
 
 // Observe all cards
