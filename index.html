@@ -1,63 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEGANOS</title>
-    <link rel="stylesheet" href="index.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap" rel="stylesheet"/>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STEGANOS</title>
+  <link rel="stylesheet" href="index.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet"/>
 </head>
-<header>
+<body>
+  <header>
     <div class="header">
-  <h2 class="title">Association Of Cyber Security</h2>
-</div>
-
+      <h2 class="title">Association Of Cyber Security</h2>
+    </div>
     <p style="color:white;font-family: 'Orbitron', sans-serif;">presents</p>
     <h1 id="typewriter"></h1>
+  </header>
 
-</header>
-<body>
-    <div class="container">
+  <!-- Desktop version -->
+  <div class="desktop-container">
+    <a href="tech.html">
+      <div class="card">
+        <h2>Technical</h2>
+      </div>
+    </a>
+    <a href="nontech.html">
+      <div class="card">
+        <h2>Non Technical</h2>
+      </div>
+    </a>
+  </div>
+
+  <!-- Mobile carousel -->
+  <div class="mobile-container" id="mobileContainer">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide">
         <a href="tech.html">
-            <div class="card">
-                <h2>Technical</h2>
-            </div>
+          <div class="card">
+            <h2>Technical</h2>
+          </div>
         </a>
+      </div>
+      <div class="carousel-slide">
         <a href="nontech.html">
-        <div class="card">
+          <div class="card">
             <h2>Non Technical</h2>
-        </div>
+          </div>
         </a>
+      </div>
     </div>
-    <script>
-  const text = "STEGANOS";
-  let i = 0;
-  const speed = 150;
+  </div>
 
-  function typeWriter() {
-    if (i < text.length) {
-      document.getElementById("typewriter").innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
+  <div class="indicators">
+    <div class="dot active" data-slide="0"></div>
+    <div class="dot" data-slide="1"></div>
+  </div>
+
+  <div class="swipe-hint" id="swipeHint">← Swipe to explore →</div>
+
+  <script>
+    // Typewriter
+    const text = "STEGANOS";
+    let i = 0;
+    const speed = 150;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
     }
-  }
+    window.addEventListener('load', typeWriter);
 
-  window.addEventListener('load', typeWriter);
-</script>
+    // Mobile carousel
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.dot');
+    const swipeHint = document.getElementById('swipeHint');
+    let currentSlide = 0;
+    let startX = 0;
+    let isDragging = false;
 
-<div class="para">
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentSlide * 100}vw)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = currentSlide === 0 ? 1 : 0;
+      updateCarousel();
+    }
+    function prevSlide() {
+      currentSlide = currentSlide === 1 ? 0 : 1;
+      updateCarousel();
+    }
+
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      swipeHint.style.opacity = '0';
+    });
+
+    track.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0 && currentSlide === 0) nextSlide();
+        else if (diff < 0 && currentSlide === 1) prevSlide();
+      }
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+      });
+    });
+
+    setTimeout(() => { swipeHint.style.opacity = '0'; }, 3000);
+  </script>
+
+  <div class="para">
     <p style="color: white; font-size: 18px;">Contact us on:</p>
     <p style="color: white; font-size: 16px;">
-        📸 Instagram: <a href="https://instagram.com/steganos_sympo" target="_blank" style="color: #ff4d4d; text-decoration: none;">@steganos_sympo</a><br>
-        💬 WhatsApp: <a href="https://wa.me/919876543210" target="_blank" style="color: #25D366; text-decoration: none;">+91 98765 43210</a><br>
-        📞 Phone: <a href="tel:+919876543210" style="color: #ff4d4d; text-decoration: none;">+91 98765 43210</a>
+      📸 Instagram: <a href="https://instagram.com/steganos_sympo" target="_blank" style="color: #ff4d4d; text-decoration: none;">@steganos_sympo</a><br>
+      💬 WhatsApp: <a href="https://wa.me/919876543210" target="_blank" style="color: #25D366; text-decoration: none;">+91 98765 43210</a><br>
+      📞 Phone: <a href="tel:+919876543210" style="color: #ff4d4d; text-decoration: none;">+91 98765 43210</a>
     </p>
-</div>
+  </div>
 </body>
 </html>
-
-
-
-
