@@ -69,9 +69,12 @@ header h1 {
 }
 
 .card {
-    width: 43vw;
+    width: 90%;
+    max-width: 450px;
+    min-width: 150px;
     text-align: center;
     white-space: normal;
+    word-wrap: break-word;
     margin-left:10px;
     height: 200px;
     font-family: 'Orbitron', sans-serif;
@@ -109,9 +112,6 @@ color: white;
 .para{
   text-align: center;
 }
-
-
-
 
 
 
