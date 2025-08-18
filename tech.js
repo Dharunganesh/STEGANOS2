@@ -1,83 +1,64 @@
-// Cache DOM elements and variables
 const cards = document.querySelectorAll(".card");
 const container = document.querySelector('.container');
+let activeCard = null;
 
-let activeIndex = -1;
-let isUserScrolling = false;
-let rafId = null;
+// Set first card as active on load
+function setActive(card) {
+    if (activeCard) {
+        activeCard.classList.remove("active");
+    }
+    card.classList.add("active");
+    activeCard = card;
+}
 
-// Single RAF-based scroll handler
-function updateActiveCard() {
-    const containerRect = container.getBoundingClientRect();
-    const mid = containerRect.height / 2 + containerRect.top;
+// Initialize with first card
+setActive(cards[0]);
+
+// IntersectionObserver with better thresholds
+const observer = new IntersectionObserver((entries) => {
+    const visibleCards = entries
+        .filter(entry => entry.intersectionRatio > 0)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
     
-    let bestIndex = -1;
-    let minDistance = Infinity;
-    
-    // Use for loop for better performance
-    for (let i = 0; i < cards.length; i++) {
-        const rect = cards[i].getBoundingClientRect();
-        const cardCenter = rect.top + rect.height / 2;
-        const distance = Math.abs(mid - cardCenter);
+    if (visibleCards.length > 0) {
+        const mostVisible = visibleCards[0].target;
         
-        if (distance < minDistance) {
-            minDistance = distance;
-            bestIndex = i;
+        // Special handling for first and last cards
+        const scrollTop = container.scrollTop;
+        const scrollHeight = container.scrollHeight;
+        const containerHeight = container.clientHeight;
+        
+        let targetCard = mostVisible;
+        
+        // Force first card when near top
+        if (scrollTop < 100) {
+            targetCard = cards[0];
+        }
+        // Force last card when near bottom
+        else if (scrollTop + containerHeight > scrollHeight - 100) {
+            targetCard = cards[cards.length - 1];
+        }
+        
+        if (targetCard !== activeCard) {
+            setActive(targetCard);
         }
     }
-    
-    // Only update if index changed
-    if (bestIndex !== activeIndex && bestIndex !== -1) {
-        // Remove active from previous
-        if (activeIndex >= 0) {
-            cards[activeIndex].classList.remove("active");
-        }
-        
-        // Add active to current
-        cards[bestIndex].classList.add("active");
-        activeIndex = bestIndex;
-    }
-    
-    rafId = null;
-}
-
-// Scroll event handler
-function onScroll() {
-    if (!isUserScrolling && !rafId) {
-        rafId = requestAnimationFrame(updateActiveCard);
-    }
-}
-
-// Click handler
-function handleClick(index) {
-    isUserScrolling = true;
-    
-    // Immediate visual update
-    if (activeIndex >= 0) {
-        cards[activeIndex].classList.remove("active");
-    }
-    cards[index].classList.add("active");
-    activeIndex = index;
-    
-    // Smooth scroll
-    cards[index].scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
-    
-    // Reset flag after scroll animation
-    setTimeout(() => {
-        isUserScrolling = false;
-    }, 600);
-}
-
-// Add event listeners efficiently
-cards.forEach((card, index) => {
-    card.addEventListener("click", () => handleClick(index), { passive: true });
-    card.addEventListener("touchstart", () => handleClick(index), { passive: true });
+}, {
+    root: container,
+    threshold: [0, 0.1, 0.3, 0.5, 0.7, 0.9, 1],
+    rootMargin: "-10% 0px -10% 0px"
 });
 
-container.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('load', () => {
-    rafId = requestAnimationFrame(updateActiveCard);
+// Observe all cards
+cards.forEach(card => observer.observe(card));
+
+// Click handler
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        setActive(card);
+        card.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    });
 });
