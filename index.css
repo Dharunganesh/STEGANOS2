@@ -159,146 +159,43 @@ a {
   transition: opacity 0.3s ease;
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
-  /* Force full viewport height usage */
-  body, html {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  
-  /* Main container should fill viewport */
-  .mobile-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    min-height: 100vh;
-  }
-  
-  /* Hide desktop row */
-  .desktop-container { 
-    display: none; 
-  }
-  
-  /* Header - fixed size to prevent layout shift */
-  header {
-    flex-shrink: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .header {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  header h1 {
-    font-size: clamp(2.8rem, 8vw, 3.6rem);
-    margin-bottom: 0.5rem;
-  }
-  
-  .title {
-    font-size: clamp(1.2rem, 4.8vw, 1.6rem);
-    margin-bottom: 1rem;
-  }
-  
-  /* Carousel takes remaining space */
-  .carousel-track {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    min-height: 0; /* Important for flexbox */
-    height: auto;
-  }
-  
-  .carousel-slide {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  
-  /* Cards should be taller to fill more space */
+  /* Hide desktop row, show carousel */
+  .desktop-container { display: none; }
+  .mobile-container { display: block; height: auto; }
+  .carousel-track { height: auto; }
+  .carousel-slide { padding: 12px; }
+
+  /* Header sizing & spacing */
+  header { margin-top: 10px; }
+  .header { margin-top: 10px; margin-bottom: 0; }
+  header h1 { font-size: clamp(2.8rem, 8vw, 3.6rem); }
+  .title { font-size: clamp(1.2rem, 4.8vw, 1.6rem); }
+
+  /* Bigger cards */
   .card {
     width: 88vw;
     max-width: none;
-    height: min(60vh, 280px); /* Responsive height based on viewport */
+    height: 230px;
     font-size: clamp(1.1rem, 5.2vw, 1.6rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
-  
-  /* Indicators - fixed at bottom */
-  .indicators {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 12px 0 8px;
-    padding-bottom: env(safe-area-inset-bottom, 8px); /* Account for phone notches */
-  }
-  
-  .dot {
-    width: 12px;
-    height: 12px;
-  }
-  
-  /* Swipe hint */
-  .swipe-hint {
-    flex-shrink: 0;
-    display: block;
-    text-align: center;
-    color: rgba(255,255,255,0.7);
-    font-size: 0.95rem;
-    margin: 0 0 12px;
-    padding-bottom: env(safe-area-inset-bottom, 12px);
-  }
-  
-  /* Contact section - if it exists */
-  .para {
-    padding: 10px 16px;
-    margin-bottom: env(safe-area-inset-bottom, 16px);
-  }
-  
-  /* Subtle hover effect */
-  .card:hover {
-    transform: scale(1.02);
-    transition: transform 0.2s ease;
-  }
-  
-  /* Alternative: If you want even more screen usage */
-  .full-height-variant .card {
-    height: min(70vh, 350px); /* Even taller cards */
-  }
-  
-  .full-height-variant header h1 {
-    font-size: clamp(2.4rem, 7vw, 3.2rem); /* Slightly smaller header */
-  }
+
+  /* Indicators & hint */
+  .indicators { display: flex; justify-content: center; gap: 10px; margin: 8px 0 0; }
+  .dot { width: 12px; height: 12px; }
+  .swipe-hint { display: block; text-align: center; color: rgba(255,255,255,0.7); font-size: 0.95rem; margin: 6px 0 12px; }
+
+  /* Contact block tighter */
+  .para { padding: 10px 16px 24px; }
+
+  /* Optional subtle hover */
+  .card:hover { transform: scale(1.03); }
 }
 
-/* Extra small screens (phones in portrait) */
-@media (max-width: 480px) {
-  .card {
-    height: min(65vh, 300px);
-    width: 92vw;
-  }
-  
-  header h1 {
-    font-size: clamp(2.4rem, 9vw, 3.2rem);
-  }
-  
-  .carousel-slide {
-    padding: 8px;
-  }
-}
 
 .para {
   text-align: center;
   padding: 20px;
   color: white;
 }
-
-
