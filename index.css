@@ -110,6 +110,18 @@ color: white;
   text-align: center;
 }
 @media (max-width: 768px) {
+  header h1 {
+    font-size: 5.2rem;
+    color: #ff3333;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 30px #ff0000;
+    font-family: 'SD Dystopian', sans-serif;
+    animation: glowSteganos 2s ease-in-out infinite;
+    margin-top: 0;
+  margin-bottom:20px;
+}
   .container {
     display: flex;
     flex-direction:column;
@@ -146,5 +158,6 @@ color: white;
         0 0 40px rgba(255, 0, 0, 0.1);
 }
 }
+
 
 
