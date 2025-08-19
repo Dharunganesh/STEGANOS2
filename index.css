@@ -169,8 +169,8 @@ a {
 
   /* Header sizing & spacing */
   header { margin-top: 10px; }
-  .header { margin-top: 10px; margin-bottom: 0; }
-  header h1 { font-size: clamp(2.8rem, 8vw, 3.6rem); }
+  .header { margin-top: 10px; margin-bottom: -8px; }
+  header h1 { font-size: 25px; }
   .title { font-size: clamp(1.2rem, 4.8vw, 1.6rem); }
 
   /* Bigger cards */
@@ -199,5 +199,6 @@ a {
   padding: 20px;
   color: white;
 }
+
 
 
