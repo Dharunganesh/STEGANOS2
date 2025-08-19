@@ -10,6 +10,7 @@ body {
   margin-top: 0px;
   overflow-x: hidden;
   font-family: 'Orbitron', sans-serif;
+  min-height: 100vh;
 }
 
 body::before {
@@ -72,7 +73,6 @@ header h1 {
   display: none;
   position: relative;
   width: 100vw;
-  height: 100vh;
   overflow: hidden;
 }
 
@@ -133,12 +133,12 @@ a {
   display: none;
   justify-content: center;
   gap: 10px;
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: rgba(255, 0, 0, 0.3);
   transition: all 0.3s ease;
@@ -155,50 +155,105 @@ a {
   text-align: center;
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
-  margin: 10px 0;
+  margin: 8px 0;
   transition: opacity 0.3s ease;
 }
 
-/* Mobile styles */
+/* Mobile styles - CAROUSEL VERSION */
 @media (max-width: 768px) {
-  /* Hide desktop row, show carousel */
-  .desktop-container { display: none; }
-  .mobile-container { display: block; height: auto; }
-  .carousel-track { height: auto; }
-  .carousel-slide { padding: 12px; }
-
-  /* Header sizing & spacing */
-  header { margin-top: 10px; }
-  .header { margin-top: 10px; margin-bottom: -8px; }
-  header h1 { font-size: 25px; }
-  .title { font-size: clamp(1.2rem, 4.8vw, 1.6rem); }
-
-  /* Bigger cards */
-  .card {
-    width: 88vw;
-    max-width: none;
-    height: 230px;
-    font-size: clamp(1.1rem, 5.2vw, 1.6rem);
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Indicators & hint */
-  .indicators { display: flex; justify-content: center; gap: 10px; margin: 8px 0 0; }
-  .dot { width: 12px; height: 12px; }
-  .swipe-hint { display: block; text-align: center; color: rgba(255,255,255,0.7); font-size: 0.95rem; margin: 6px 0 12px; }
+  /* Hide desktop, show mobile carousel */
+  .desktop-container { display: none; }
+  .mobile-container { 
+    display: block; 
+    height: auto;
+    flex: 1;
+  }
 
-  /* Contact block tighter */
-  .para { padding: 10px 16px 24px; }
+  /* Tighter header layout */
+  header { 
+    margin-top: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .header { 
+    margin-top: 5px; 
+    margin-bottom: -8px; 
+  }
+  
+  /* LARGER STEGANOS */
+  header h1 { 
+    font-size: clamp(38px, 9vw, 50px);
+    margin-bottom: 8px;
+  }
+  
+  /* TIGHTER Association text */
+  .title { 
+    font-size: clamp(1.0rem, 4.0vw, 1.3rem);
+    margin-bottom: 3px;
+  }
+  
+  header p {
+    margin: 3px 0 12px 0;
+    font-size: 0.85rem;
+  }
 
-  /* Optional subtle hover */
-  .card:hover { transform: scale(1.03); }
+  /* Carousel adjustments */
+  .carousel-track { 
+    height: auto; 
+    min-height: 220px;
+  }
+  
+  .carousel-slide { 
+    padding: 15px 20px; 
+  }
+
+  /* BETTER sized cards */
+  .card {
+    width: 75vw;
+    max-width: 320px;
+    height: 200px;
+    font-size: clamp(1.1rem, 4.8vw, 1.5rem);
+  }
+
+  /* Show indicators and swipe hint */
+  .indicators { 
+    display: flex; 
+    margin: 12px 0 8px;
+  }
+  
+  .swipe-hint { 
+    display: block; 
+    font-size: 0.85rem;
+    margin: 5px 0 15px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* Contact section fills remaining space */
+  .para { 
+    padding: 15px 20px 25px;
+    margin-top: auto;
+  }
+
+  .para p:first-child {
+    margin-bottom: 10px;
+  }
+
+  .para p:last-child {
+    line-height: 1.5;
+  }
+
+  /* Subtle mobile hover */
+  .card:hover { transform: scale(1.02); }
 }
-
 
 .para {
   text-align: center;
   padding: 20px;
   color: white;
 }
-
-
-
