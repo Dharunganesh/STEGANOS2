@@ -1,41 +1,45 @@
 const cards = document.querySelectorAll(".card");
-let activeIndex = 0;
+cards.forEach(card => {
+  card.addEventListener("click", handleHighlight);
+  card.addEventListener("touchstart", handleHighlight);
+});
 
-function setActive(index) {
+cards.forEach(card => {
+  card.addEventListener("click", () => {
     cards.forEach(c => c.classList.remove("active"));
-    cards[index].classList.add("active");
-    activeIndex = index;
+    card.classList.add("active");
+    card.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  });
+});
+
+
+function handleHighlight(e) {
+  cards.forEach(c => c.classList.remove("active"));
+  e.currentTarget.classList.add("active");
 }
 
-// Set first card active on load
-setActive(0);
+function highlightVisibleCard() {
+  let mid = window.innerHeight / 2;
+  let closest = null;
+  let closestDist = Infinity;
 
-// Check if device is mobile
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  cards.forEach(card => {
+    let rect = card.getBoundingClientRect();
+    let cardCenter = rect.top + rect.height / 2;
+    let dist = Math.abs(mid - cardCenter);
 
-if (isMobile) {
-    // Mobile: Only tap to highlight (always allow clicking)
-    cards.forEach((card, index) => {
-        card.addEventListener("click", () => {
-            // Always set active, even if it's the same card
-            cards.forEach(c => c.classList.remove("active"));
-            card.classList.add("active");
-            activeIndex = index;
-        });
-    });
-    
-} else {
-    // Desktop: Hover to highlight + click to scroll
-    cards.forEach((card, index) => {
-        card.addEventListener("mouseenter", () => {
-            setActive(index);
-        });
-        
-        card.addEventListener("click", () => {
-            card.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-        });
-    });
+    if (dist < closestDist) {
+      closest = card;
+      closestDist = dist;
+    }
+  });
+
+  cards.forEach(card => card.classList.remove("active"));
+  if (closest) closest.classList.add("active");
 }
+
+document.querySelector('.container').addEventListener('scroll', highlightVisibleCard);
+window.addEventListener('load', highlightVisibleCard);
