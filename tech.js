@@ -148,9 +148,9 @@ function init() {
     card.addEventListener("click", handleCardClick);
   });
   
-  // Find initial center card
-  const initialCenter = findCenterCard();
-  activateCard(initialCenter);
+  // Always start with first card highlighted and centered
+  activateCard(0);
+  centerCard(0, false); // false = instant centering, no smooth animation on load
   
   // Event listeners
   container.addEventListener('scroll', handleScroll);
