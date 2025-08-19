@@ -69,7 +69,7 @@ header h1 {
 }
 
 .card {
-    width: 75vw;
+    width: 43vw;
     text-align: center;
     white-space: normal;
     margin-left:10px;
@@ -121,7 +121,7 @@ color: white;
 }
 
 .card {
-    width: 43vw;
+    width: 75vw;
     text-align: center;
     white-space: normal;
     margin-left:10px;
@@ -146,4 +146,5 @@ color: white;
         0 0 40px rgba(255, 0, 0, 0.1);
 }
 }
+
 
