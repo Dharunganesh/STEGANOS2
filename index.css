@@ -109,20 +109,40 @@ color: white;
 .para{
   text-align: center;
 }
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+    gap: 30px;
+    margin-top:0;           
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.card {
+    width: 43vw;
+    text-align: center;
+    white-space: normal;
+    margin-left:10px;
+    height: 200px;
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    transition: transform 0.50s ease, box-shadow 0.3s ease;
+    opacity: 1.5;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    box-shadow:
+        0 0 10px rgba(255, 0, 0, 0.3),
+        0 0 20px rgba(255, 0, 0, 0.2),
+        0 0 40px rgba(255, 0, 0, 0.1);
+}
+}
