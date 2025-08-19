@@ -172,7 +172,7 @@ a {
   .header { margin-top: 10px; margin-bottom: -12px; }
   
   /* BIGGER STEGANOS */
-  header h1 { font-size: 120px; }
+  header h1 { font-size: 105px; }
   
   /* Association text */
   .title { font-size: clamp(1.2rem, 4.6vw, 1.6rem); }
@@ -202,6 +202,7 @@ a {
   padding: 20px;
   color: white;
 }
+
 
 
 
