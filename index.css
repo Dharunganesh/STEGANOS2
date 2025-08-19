@@ -179,6 +179,7 @@ a {
 
   /* SMALLER cards - decreased width */
   .card {
+    margin-top:60px;
     width: 80vw;
     max-width: none;
     height: 230px;
@@ -202,6 +203,7 @@ a {
   padding: 20px;
   color: white;
 }
+
 
 
 
