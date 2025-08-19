@@ -1,23 +1,34 @@
 const cards = document.querySelectorAll(".card");
-cards.forEach(card => {
-  card.addEventListener("click", handleHighlight);
-  card.addEventListener("touchstart", handleHighlight);
-});
+let isAutoScrolling = false;
+
+// 🔹 Add click + touch events
 cards.forEach(card => {
   card.addEventListener("click", () => {
+    isAutoScrolling = true; // lock during auto-scroll
     cards.forEach(c => c.classList.remove("active"));
     card.classList.add("active");
     card.scrollIntoView({
       behavior: "smooth",
       block: "center"
     });
+
+    // unlock after scroll settles
+    setTimeout(() => { isAutoScrolling = false; }, 600);
   });
+
+  card.addEventListener("touchstart", handleHighlight);
 });
+
+// 🔹 Highlight function
 function handleHighlight(e) {
   cards.forEach(c => c.classList.remove("active"));
   e.currentTarget.classList.add("active");
 }
+
+// 🔹 Highlight closest card on scroll
 function highlightVisibleCard() {
+  if (isAutoScrolling) return; // ⛔ ignore while auto-scrolling
+
   let mid = window.innerHeight / 2;
   let closest = null;
   let closestDist = Infinity;
@@ -34,17 +45,27 @@ function highlightVisibleCard() {
   if (closest) closest.classList.add("active");
 }
 
-// Function to highlight the first card (card 0) on entry
-function highlightFirstCard() {
-  cards.forEach(card => card.classList.remove("active"));
-  if (cards[0]) cards[0].classList.add("active");
-}
-
 document.querySelector('.container').addEventListener('scroll', highlightVisibleCard);
-window.addEventListener('load', highlightFirstCard);
-// Also highlight first card when DOM is ready (in case load event already fired)
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', highlightFirstCard);
-} else {
-  highlightFirstCard();
+
+// 🔹 Always highlight card 0 on entry
+window.addEventListener('load', () => {
+  cards.forEach(c => c.classList.remove("active"));
+  if (cards.length > 0) {
+    cards[0].classList.add("active");
+  }
+});
+
+// 🔹 Enable hover highlight ONLY if device has mouse
+if (window.matchMedia('(hover: hover)').matches) {
+  cards.forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      cards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+    });
+    card.addEventListener("mouseleave", () => {
+      // optional: remove highlight on leave
+      // card.classList.remove("active");
+      // or keep it highlighted until scroll/click updates
+    });
+  });
 }
