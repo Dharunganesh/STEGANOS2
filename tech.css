@@ -4,19 +4,55 @@
   font-weight: normal;
   font-style: normal;
 }
+
 body {
     color: white;
     font-family: 'Rajdhani', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-header{
-    color:red;
-    text-align: center;
+/* Navigation Styles */
+.nav-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
 }
+
+.back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(255, 51, 51, 0.2);
+    color: #ff3333;
+    text-decoration: none;
+    border-radius: 25px;
+    border: 2px solid #ff3333;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.back-btn:hover {
+    background: rgba(255, 51, 51, 0.8);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 51, 51, 0.4);
+}
+
+header {
+    color: red;
+    text-align: center;
+    position: relative;
+    padding: 60px 20px 20px;
+}
+
 h1, h2 {
     font-family: 'Orbitron', sans-serif;
     animation: pulseGlow 2s infinite;
 }
+
 @keyframes pulseGlow {
   0% { text-shadow: 0 0 5px red; }
   50% { text-shadow: 0 0 20px red; }
@@ -24,69 +60,106 @@ h1, h2 {
 }
 
 .container {
-    height: 100vh;
-    overflow-y: scroll;
+    height: calc(100vh - 200px);
+    overflow-y: auto;
     scroll-behavior: smooth;
-    padding: 30px 0;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
+
 .container::-webkit-scrollbar {
-    display: none;
+    width: 8px;
 }
+
+.container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: rgba(255, 51, 51, 0.6);
+    border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 51, 51, 0.8);
+}
+
 .card {
     height: fit-content;
-    margin: 20px auto;
-    width: 65%;
-    padding-bottom:7px;
-    background: brown;
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    opacity: 0.4;
-    transform: scale(0.9);
-    text-align:center;
+    margin: 25px auto;
+    width: 80%;
+    max-width: 600px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.6));
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    opacity: 0.7;
+    transform: scale(0.95);
+    text-align: center;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
+
 .card:first-child {
   margin-top: 0px;
 }
 
 .card.active {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow:
-        0 0 30px rgba(255, 0, 0, 0.6),
-        0 0 10px rgba(255, 0, 0, 0.4);
+        0 15px 45px rgba(255, 0, 0, 0.5),
+        0 5px 15px rgba(255, 0, 0, 0.3);
+}
+
+.card h2 {
+    margin: 0 0 15px 0;
+    font-size: 1.8rem;
+    color: #ff3333;
+}
+
+.card p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0 0 20px 0;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .register {
     text-align: center;
-    margin-top: 20px;
+    margin-top: auto;
 }
 
 .register a {
     display: inline-block;
-    padding: 12px 24px;
-    background-color: #ff3333;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #ff3333, #cc0000);
     color: white;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .register a:hover {
-    background-color: #cc0000;
-    transform: scale(1.05);
+    background: linear-gradient(45deg, #cc0000, #990000);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
 }
-.card p {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1.05rem;
-    line-height: 1.6;
-}
+
 header h1 {
-    font-size: 5.2rem;
+    font-size: 4rem;
     color: #ff3333;
     text-shadow:
         0 0 10px #ff0000,
@@ -94,7 +167,7 @@ header h1 {
         0 0 30px #ff0000;
     font-family: 'SD Dystopian', sans-serif;
     animation: glowSteganos 2s ease-in-out infinite;
-    margin-top: 0;
+    margin: 0;
 }
 
 @keyframes glowSteganos {
@@ -102,11 +175,68 @@ header h1 {
   50% { text-shadow: 0 0 25px #ff0000; }
 }
 
-html{
-    background: url(background/blackbg2.jpg)no-repeat center center fixed;
-    background-size:cover;
-    z-index: -1;
-    opacity:1.5;
+html {
+    background: url(background/blackbg2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-back {
+        position: relative;
+        top: auto;
+        left: auto;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    header {
+        padding: 20px 10px;
+    }
+    
+    header h1 {
+        font-size: 3rem;
+    }
+    
+    .container {
+        height: calc(100vh - 150px);
+        padding: 15px;
+    }
+    
+    .card {
+        width: 90%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+    
+    .card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .card p {
+        font-size: 1rem;
+    }
+    
+    .register a {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .card {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .card h2 {
+        font-size: 1.3rem;
+    }
 }
 
 
