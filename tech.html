@@ -10,6 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Share+Tech+Mono&family=Nunito+Sans&display=swap" rel="stylesheet"/>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">STEGANOS</div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Technical Events...</div>
+        </div>
+    </div>
+
     <header>
         <nav class="nav-back">
             <a href="index.html" class="back-btn">← Back to Home</a>
@@ -56,6 +65,20 @@
     </main>
     
     <script src="tech.js"></script>
+    <script>
+        // Loading screen functionality
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            
+            // Hide loading screen after a minimum time to prevent flash
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
 
