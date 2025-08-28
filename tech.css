@@ -10,6 +10,21 @@ body {
     font-family: 'Rajdhani', sans-serif;
     margin: 0;
     padding: 0;
+    background: radial-gradient(#000000, #0f0f0f);
+    min-height: 100vh;
+    /* Mobile optimization */
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url(background/blackbg2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.4;
 }
 
 /* Navigation Styles */
@@ -22,8 +37,8 @@ body {
 
 .back-btn {
     display: inline-block;
-    padding: 10px 20px;
-    background: rgba(255, 51, 51, 0.2);
+    padding: 12px 24px;
+    background: rgba(255, 51, 51, 0.1);
     color: #ff3333;
     text-decoration: none;
     border-radius: 25px;
@@ -32,20 +47,22 @@ body {
     font-size: 0.9rem;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(255, 51, 51, 0.2);
 }
 
 .back-btn:hover {
     background: rgba(255, 51, 51, 0.8);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 51, 51, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 51, 51, 0.4);
 }
 
 header {
     color: red;
     text-align: center;
     position: relative;
-    padding: 60px 20px 20px;
+    padding: 80px 20px 40px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
 }
 
 h1, h2 {
@@ -60,75 +77,133 @@ h1, h2 {
 }
 
 .container {
-    height: calc(100vh - 200px);
-    overflow-y: auto;
-    scroll-behavior: smooth;
+    min-height: auto;
     padding: 20px;
     margin: 0 auto;
     max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-y: visible;
+    /* Mobile scroll optimization */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto; /* Disable smooth scroll on mobile for better performance */
 }
 
+/* Mobile-optimized scrollbar */
 .container::-webkit-scrollbar {
-    width: 8px;
+    width: 6px; /* Thinner for mobile */
 }
 
 .container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
 }
 
 .container::-webkit-scrollbar-thumb {
-    background: rgba(255, 51, 51, 0.6);
+    background: linear-gradient(180deg, #ff3333, #cc0000);
     border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .container::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 51, 51, 0.8);
+    background: linear-gradient(180deg, #cc0000, #990000);
 }
 
 .card {
-    height: fit-content;
-    margin: 25px auto;
-    width: 80%;
-    max-width: 600px;
-    padding: 25px;
-    background: linear-gradient(135deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.6));
-    border-radius: 20px;
-    transition: all 0.4s ease;
-    opacity: 0.7;
-    transform: scale(0.95);
+    min-height: 200px;
+    margin: 0 auto;
+    width: 85%;
+    max-width: 700px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    transition: all 0.3s ease; /* Faster transition for mobile */
+    opacity: 0.9;
+    transform: scale(0.98);
     text-align: center;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(255, 0, 0, 0.2),
+        0 4px 16px rgba(255, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /* Reduced blur for mobile performance */
+    position: relative;
+    overflow: visible;
+    cursor: pointer;
+    /* Mobile optimization */
+    -webkit-transform: translateZ(0); /* Hardware acceleration */
+    transform: translateZ(0);
+    will-change: transform, opacity; /* Optimize for animations */
+}
+
+/* Simplified hover effect for mobile */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 51, 51, 0.1), transparent);
+    transition: left 0.4s ease; /* Faster for mobile */
+}
+
+.card:hover::before {
+    left: 100%;
 }
 
 .card:first-child {
   margin-top: 0px;
 }
 
+/* Enhanced active state - mobile optimized */
 .card.active {
-    opacity: 1;
-    transform: scale(1.02);
+    opacity: 1 !important;
+    transform: scale(1.01) !important; /* Smaller scale for mobile */
     box-shadow:
-        0 15px 45px rgba(255, 0, 0, 0.5),
-        0 5px 15px rgba(255, 0, 0, 0.3);
+        0 15px 35px rgba(255, 0, 0, 0.4),
+        0 8px 20px rgba(255, 0, 0, 0.3),
+        0 0 0 2px rgba(255, 51, 51, 0.6) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 51, 51, 0.8) !important;
+}
+
+.card.active h2 {
+    color: #ff6666 !important;
+    text-shadow: 0 0 15px rgba(255, 102, 102, 0.6) !important; /* Reduced shadow for mobile */
+}
+
+.card:hover {
+    opacity: 1;
+    transform: scale(1.005); /* Smaller hover effect for mobile */
+    box-shadow:
+        0 15px 35px rgba(255, 0, 0, 0.3),
+        0 8px 20px rgba(255, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.07);
 }
 
 .card h2 {
-    margin: 0 0 15px 0;
-    font-size: 1.8rem;
+    margin: 0 0 20px 0;
+    font-size: 2rem;
     color: #ff3333;
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.5); /* Reduced shadow for mobile */
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
 .card p {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin: 0 0 20px 0;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 0 0 25px 0;
     color: rgba(255, 255, 255, 0.9);
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 1;
 }
 
 .register {
@@ -138,28 +213,53 @@ h1, h2 {
 
 .register a {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 18px 36px;
     background: linear-gradient(45deg, #ff3333, #cc0000);
     color: white;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 25px;
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+    border-radius: 30px;
+    box-shadow: 
+        0 8px 25px rgba(255, 0, 0, 0.4),
+        0 4px 15px rgba(255, 0, 0, 0.2);
     transition: all 0.3s ease;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    /* Mobile optimization */
+    -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
+    touch-action: manipulation; /* Optimize touch behavior */
+}
+
+.register a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.4s ease; /* Faster for mobile */
+}
+
+.register a:hover::before {
+    left: 100%;
 }
 
 .register a:hover {
     background: linear-gradient(45deg, #cc0000, #990000);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 35px rgba(255, 0, 0, 0.6),
+        0 6px 20px rgba(255, 0, 0, 0.4);
 }
 
 header h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     color: #ff3333;
     text-shadow:
         0 0 10px #ff0000,
@@ -175,13 +275,7 @@ header h1 {
   50% { text-shadow: 0 0 25px #ff0000; }
 }
 
-html {
-    background: url(background/blackbg2.jpg) no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-}
-
-/* Responsive Design */
+/* Mobile-specific optimizations */
 @media (max-width: 768px) {
     .nav-back {
         position: relative;
@@ -192,50 +286,86 @@ html {
     }
     
     header {
-        padding: 20px 10px;
+        padding: 60px 15px 30px;
     }
     
     header h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
     
     .container {
-        height: calc(100vh - 150px);
         padding: 15px;
+        gap: 25px;
+        /* Mobile scroll optimization */
+        scroll-behavior: auto;
+        -webkit-overflow-scrolling: touch;
     }
     
     .card {
-        width: 90%;
-        padding: 20px;
-        margin: 20px auto;
+        width: 92%;
+        padding: 25px;
+        margin: 0 auto;
+        min-height: 180px;
+        /* Mobile performance optimizations */
+        backdrop-filter: blur(5px); /* Reduced blur for mobile */
+        transition: all 0.2s ease; /* Faster transitions for mobile */
     }
     
     .card h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
     
     .card p {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
     }
     
     .register a {
-        padding: 12px 24px;
-        font-size: 0.9rem;
+        padding: 15px 30px;
+        font-size: 1rem;
+        /* Mobile touch optimization */
+        min-height: 44px; /* Minimum touch target size */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
 @media (max-width: 480px) {
     header h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
     
     .card {
         width: 95%;
-        padding: 15px;
+        padding: 20px;
+        min-height: 160px;
+        /* Further mobile optimizations */
+        backdrop-filter: blur(3px); /* Minimal blur for very small screens */
     }
     
     .card h2 {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
+    }
+    
+    .card p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .register a {
+        padding: 14px 28px;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+    
+    /* Disable complex animations on very small screens */
+    .card::before {
+        display: none;
+    }
+    
+    .card:hover {
+        transform: none;
     }
 }
 
