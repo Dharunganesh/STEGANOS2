@@ -213,20 +213,20 @@ h1, h2 {
 
 .register a {
     display: inline-block;
-    padding: 18px 36px;
+    padding: 15px 30px; /* Reduced padding */
     background: linear-gradient(45deg, #ff3333, #cc0000);
     color: white;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 25px; /* Reduced border radius */
     box-shadow: 
-        0 8px 25px rgba(255, 0, 0, 0.4),
-        0 4px 15px rgba(255, 0, 0, 0.2);
+        0 6px 20px rgba(255, 0, 0, 0.4),
+        0 3px 10px rgba(255, 0, 0, 0.2);
     transition: all 0.3s ease;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.1rem;
+    font-size: 0.95rem; /* Smaller font size */
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px; /* Reduced letter spacing */
     border: 2px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
@@ -254,8 +254,8 @@ h1, h2 {
     background: linear-gradient(45deg, #cc0000, #990000);
     transform: translateY(-2px);
     box-shadow: 
-        0 12px 35px rgba(255, 0, 0, 0.6),
-        0 6px 20px rgba(255, 0, 0, 0.4);
+        0 10px 30px rgba(255, 0, 0, 0.6),
+        0 5px 15px rgba(255, 0, 0, 0.4);
 }
 
 header h1 {
@@ -286,45 +286,45 @@ header h1 {
     }
     
     header {
-        padding: 60px 15px 30px;
+        padding: 50px 15px 25px; /* Reduced padding */
     }
     
     header h1 {
-        font-size: 3.5rem;
+        font-size: 3rem; /* Smaller header for mobile */
     }
     
     .container {
-        padding: 15px;
-        gap: 25px;
-        /* Mobile scroll optimization */
-        scroll-behavior: auto;
-        -webkit-overflow-scrolling: touch;
+        padding: 15px 10px; /* Reduced side padding */
+        gap: 20px; /* Reduced gap */
     }
     
     .card {
-        width: 92%;
-        padding: 25px;
+        width: 95%; /* Wider cards to use more screen space */
+        padding: 20px; /* Reduced padding */
         margin: 0 auto;
-        min-height: 180px;
+        min-height: 150px; /* Reduced height */
         /* Mobile performance optimizations */
         backdrop-filter: blur(5px); /* Reduced blur for mobile */
         transition: all 0.2s ease; /* Faster transitions for mobile */
     }
     
     .card h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem; /* Smaller headings */
+        margin: 0 0 15px 0; /* Reduced margin */
     }
     
     .card p {
-        font-size: 1.1rem;
-        line-height: 1.6;
+        font-size: 1rem; /* Smaller text */
+        line-height: 1.5; /* Reduced line height */
+        margin: 0 0 20px 0; /* Reduced margin */
     }
     
     .register a {
-        padding: 15px 30px;
-        font-size: 1rem;
+        padding: 12px 24px; /* Smaller button */
+        font-size: 0.85rem; /* Smaller font */
+        letter-spacing: 0.5px; /* Reduced spacing */
         /* Mobile touch optimization */
-        min-height: 44px; /* Minimum touch target size */
+        min-height: 40px; /* Minimum touch target size */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -333,30 +333,38 @@ header h1 {
 
 @media (max-width: 480px) {
     header h1 {
-        font-size: 3rem;
+        font-size: 2.5rem; /* Even smaller header */
+    }
+    
+    .container {
+        padding: 10px 5px; /* Minimal padding */
+        gap: 15px; /* Minimal gap */
     }
     
     .card {
-        width: 95%;
-        padding: 20px;
-        min-height: 160px;
+        width: 98%; /* Almost full width */
+        padding: 15px; /* Minimal padding */
+        min-height: 130px; /* Compact height */
         /* Further mobile optimizations */
         backdrop-filter: blur(3px); /* Minimal blur for very small screens */
     }
     
     .card h2 {
-        font-size: 1.6rem;
+        font-size: 1.4rem; /* Compact headings */
+        margin: 0 0 10px 0; /* Minimal margin */
     }
     
     .card p {
-        font-size: 1rem;
-        line-height: 1.5;
+        font-size: 0.9rem; /* Compact text */
+        line-height: 1.4; /* Compact line height */
+        margin: 0 0 15px 0; /* Minimal margin */
     }
     
     .register a {
-        padding: 14px 28px;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
+        padding: 10px 20px; /* Compact button */
+        font-size: 0.8rem; /* Compact font */
+        letter-spacing: 0.3px; /* Minimal spacing */
+        min-height: 36px; /* Compact touch target */
     }
     
     /* Disable complex animations on very small screens */
